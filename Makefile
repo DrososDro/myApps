@@ -24,5 +24,8 @@ pytest:
 migrate:
 	docker-compose -f local.yml run --rm myapp_server python manage.py migrate 
 
-makemigration:
+makemigrations:
 	docker-compose -f local.yml run --rm myapp_server python manage.py makemigrations
+
+superuser:
+	docker-compose -f local.yml run --rm myapp_server python manage.py createsuperuser 

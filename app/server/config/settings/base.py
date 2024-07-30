@@ -33,7 +33,7 @@ ROOT_APPS = [
 ]
 THIRD_PARTY_APPS = []
 
-LOCAL_APPS = ["core_apps.common", "core_apps.user"]
+LOCAL_APPS = ["core_apps.common", "core_apps.user", "core_apps.profiles"]
 
 INSTALLED_APPS = ROOT_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
