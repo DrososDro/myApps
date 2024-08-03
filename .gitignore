@@ -1,6 +1,6 @@
 .envs/*
 !.envs/.env.example
-.envs/*
+.envs/
 !.envs/.env.example
 api/*.log
 api/*.pot
