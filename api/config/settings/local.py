@@ -9,7 +9,8 @@ SECRET_KEY = getenv(
 
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "0.0.0.0"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "0.0.0.0", "192.168.1.102"]
+CSRF_TRUSTED_ORIGINS = ["http://0.0.0.0:8080", "http://localhost:8080"]
 
 LOGGING = {
     "version": 1,
@@ -31,3 +32,10 @@ LOGGING = {
         "handlers": ["console"],
     },
 }
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = getenv("EMAIL_HOST")
+EMAIL_USE_TLS = getenv("EMAIL_USE_TLS")
+EMAIL_PORT = getenv("EMAIL_PORT")
+EMAIL_HOST_USER = getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = getenv("EMAIL_HOST_PASSWORD")

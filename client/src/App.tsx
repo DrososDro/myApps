@@ -20,6 +20,7 @@ import ShowUser from "./features/user/ShowUser";
 import ShowToDoList from "./features/todo/ShowToDoList";
 import AddToDoList from "./features/todo/AddToDoList";
 import AddEditTodo from "./features/todo/AddEditTodo";
+import ShowToDos from "./features/todo/ShowToDos";
 
 const queryclient = new QueryClient({
   defaultOptions: {
@@ -75,6 +76,7 @@ const routet = createBrowserRouter([
               { path: "show-todos", element: <ShowToDoList /> },
               { path: "add-todo", element: <AddToDoList /> },
               { path: ":pkid/add-edit-todo", element: <AddEditTodo /> },
+              { path: "show-todos", element: <ShowToDos /> },
             ],
           },
         ],
