@@ -14,7 +14,7 @@ interface NutritionType {
 interface NutritionDayType {
   created_at: string;
   total_foods_calories: number;
-  nutrition_date: NutritionType[];
+  nutrition_day: NutritionType[];
 }
 interface NutritionDataType {
   count: number;
@@ -39,13 +39,13 @@ export default function NutritionCard() {
         <CardLayout.Title>Nutritions</CardLayout.Title>
       </CardLayout.Header>
       <CardLayout.Body className="h-3/5 md:h-4/6 md:grid-cols-3">
-        {nutritionData?.results.map((item) => (
+        {nutritionData?.results?.map((item) => (
           <Card key={item.created_at} link="#">
             <Card.Title className="text-center">
               {dateToGRformat(item.created_at)}
             </Card.Title>
             <Card.Body>
-              {item.nutrition_date.map((day, index) => (
+              {item.nutrition_day.map((day, index) => (
                 <div
                   key={index}
                   className="grid grid-cols-[auto_auto_1fr_0.2fr] items-center gap-4 justify-self-start"

@@ -18,12 +18,12 @@ class NutritionSerializer(serializers.ModelSerializer):
         user = self.context["request"].user
         print(user)
 
-        nutrition_date, _ = NutritionDay.objects.get_or_create(
+        nutrition_day, _ = NutritionDay.objects.get_or_create(
             created_at__date=datetime.today().date(),
             profile=user.profile,
         )
         nutrition = Nutrition.objects.create(
-            nutrition_date=nutrition_date, **validated_data
+            nutrition_day=nutrition_day, **validated_data
         )
         nutrition.total_calories = nutrition.quantity * nutrition.food.callories
         nutrition.save()
@@ -32,11 +32,11 @@ class NutritionSerializer(serializers.ModelSerializer):
 
 
 class NutritionDaySerializer(serializers.ModelSerializer):
-    nutrition_date = NutritionSerializer(many=True)
+    nutrition_day = NutritionSerializer(many=True)
 
     class Meta:
         model = NutritionDay
-        fields = ["total_foods_calories", "created_at", "nutrition_date"]
+        fields = ["total_foods_calories", "created_at", "nutrition_day"]
 
 
 class FoodDataSerializer(serializers.ModelSerializer):

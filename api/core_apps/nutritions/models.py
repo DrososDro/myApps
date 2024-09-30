@@ -30,11 +30,11 @@ class NutritionDay(TimeStampedModel):
 
 
 class Nutrition(TimeStampedModel):
-    nutrition_date = models.ForeignKey(
+    nutrition_day = models.ForeignKey(
         NutritionDay,
         on_delete=models.CASCADE,
-        verbose_name=_("Nutrition Date"),
-        related_name="nutrition_date",
+        verbose_name=_("Nutrition Day"),
+        related_name="nutrition_day",
     )
     eat_time = models.TimeField()
     total_calories = models.IntegerField(blank=True, null=True)

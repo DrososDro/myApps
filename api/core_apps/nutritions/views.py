@@ -14,7 +14,7 @@ class NutritionViewSet(ModelViewSet):
 
     def get_queryset(self):
         user = self.request.user
-        return Nutrition.objects.filter(nutrition_date__profile=user.profile)
+        return Nutrition.objects.filter(nutrition_day__profile=user.profile)
 
 
 class FoodDataViewset(ModelViewSet):
