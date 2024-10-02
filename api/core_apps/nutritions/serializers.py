@@ -38,6 +38,8 @@ class NutritionDaySerializer(serializers.ModelSerializer):
         model = NutritionDay
         fields = ["total_foods_calories", "created_at", "nutrition_day"]
 
+    nutrition_date = NutritionSerializer(many=True)
+
 
 class FoodDataSerializer(serializers.ModelSerializer):
     class Meta:
