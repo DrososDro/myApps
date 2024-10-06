@@ -25,7 +25,7 @@ class NutritionSerializer(serializers.ModelSerializer):
         nutrition = Nutrition.objects.create(
             nutrition_day=nutrition_day, **validated_data
         )
-        nutrition.total_calories = nutrition.quantity * nutrition.food.callories
+        nutrition.total_calories = nutrition.quantity * nutrition.food.calories
         nutrition.save()
 
         return nutrition
@@ -42,4 +42,4 @@ class NutritionDaySerializer(serializers.ModelSerializer):
 class FoodDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = FoodData
-        fields = ["food", "quantity", "callories", "pkid"]
+        fields = ["food", "quantity", "calories", "pkid"]

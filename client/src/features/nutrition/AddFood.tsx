@@ -1,12 +1,13 @@
 interface FoodDataType {
   food: string;
   quantity: string;
-  callories: number;
+  calories: number;
   pkid: number;
 }
 interface FormType {
   eat_time: string;
   quantity: string;
+  test: { value: number; pkid: number; label: string };
 }
 type SelectValuesTypes = {
   label: string;
@@ -98,7 +99,7 @@ export default function AddFood() {
           })}
           options={foodOptionsData.map((item: FoodDataType) => ({
             label: `${item.food} (${item.quantity})`,
-            value: item.callories,
+            value: item.calories,
             pkid: item.pkid,
           }))}
           onChange={setFood}

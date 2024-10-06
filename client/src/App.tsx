@@ -20,7 +20,6 @@ import AddEditTodoTask from "./features/todo/AddEditTodoTask";
 import AddTodo from "./features/todo/AddTodo";
 import { refresh } from "./services/authApiCalls";
 import UnderConstruction from "./components/UnderConstruction";
-import AddDiary from "./features/daily-diary/AddDiary";
 import { apiDiaryChoices } from "./services/diaryApi";
 import DiaryDetails from "./features/daily-diary/DiaryDetails";
 import CountDownTimer from "./features/timer/CountDownTimer";
@@ -28,6 +27,8 @@ import TodoCard from "./features/todo/TodoCard";
 import DiaryCard from "./features/daily-diary/DiaryCard";
 import NutritionCard from "./features/nutrition/NutritionCard";
 import AddFood from "./features/nutrition/AddFood";
+import AddToDiary from "./features/dairy/AddToDiary";
+import AddDiary from "./features/daily-diary/AddDiary";
 
 const queryclient = new QueryClient({
   defaultOptions: {
@@ -67,6 +68,26 @@ const routet = createBrowserRouter([
           {
             path: "/daily-diary",
             children: [
+              { index: true, element: <Navigate replace to="diary-show" /> },
+              {
+                path: "diary-show",
+                errorElement: <Error404 />,
+                loader: apiDiaryChoices,
+                element: <DiaryCard />,
+              },
+              {
+                path: "diary-add",
+                element: <AddDiary />,
+                errorElement: <Error404 />,
+                loader: apiDiaryChoices,
+              },
+              { path: ":pkid/diary-details", element: <DiaryDetails /> },
+            ],
+          },
+
+          {
+            path: "/diary",
+            children: [
               { index: true, element: <Navigate replace to="show-diary" /> },
               {
                 path: "show-diary",
@@ -76,7 +97,7 @@ const routet = createBrowserRouter([
               },
               {
                 path: "add-diary",
-                element: <AddDiary />,
+                element: <AddToDiary />,
                 errorElement: <Error404 />,
                 loader: apiDiaryChoices,
               },

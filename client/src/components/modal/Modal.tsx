@@ -1,12 +1,14 @@
 import { cloneElement, createContext, useContext, useState } from "react";
 import { createPortal } from "react-dom";
-import { useOutsideClick } from "./useOutsideClick";
 import { FaX } from "react-icons/fa6";
-interface ModalContextType {
-  openName: string;
-  close: () => void;
-  open: React.Dispatch<React.SetStateAction<string>>;
-}
+import { useOutsideClick } from "../../hooks/useOutsideClick";
+import {
+  ModalContextType,
+  ModalOpenTypes,
+  ModalTypes,
+  ModalWindowTypes,
+} from "../../types/componentTypes/modalTypes";
+
 const initialValue = {
   openName: "",
   close: () => null,
@@ -15,9 +17,8 @@ const initialValue = {
 
 const ModalContext = createContext<ModalContextType>(initialValue);
 
-function Modal({ children }: { children: React.ReactNode }) {
+function Modal({ children }: ModalTypes) {
   const [openName, setOpenName] = useState("");
-
   const close = () => setOpenName("");
   const open = setOpenName;
 
@@ -28,25 +29,13 @@ function Modal({ children }: { children: React.ReactNode }) {
   );
 }
 
-function Open({
-  children,
-  opens: opensWindowName,
-}: {
-  children: React.ReactElement;
-  opens: string;
-}) {
+function ModalOpen({ children, opens: opensWindowName }: ModalOpenTypes) {
   const { open } = useContext(ModalContext);
 
   return cloneElement(children, { onClick: () => open(opensWindowName) });
 }
 
-function Window({
-  children,
-  name,
-}: {
-  children: React.ReactElement;
-  name: string;
-}) {
+function ModalWindow({ children, name }: ModalWindowTypes) {
   const { openName, close } = useContext(ModalContext);
   const ref = useOutsideClick(close);
 
@@ -54,8 +43,6 @@ function Window({
 
   return createPortal(
     <div className=" h-svh fixed left-0 top-0 z-50 w-full text-slate-50 backdrop-blur-md transition-all duration-500">
-      {/* overlay*/}
-      {/* StyledModal*/}
       <div
         className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-md border-4 border-slate-900 bg-slate-900 px-6 py-4 shadow-lg shadow-slate-700 "
         ref={ref}
@@ -73,7 +60,7 @@ function Window({
   );
 }
 
-Modal.Open = Open;
-Modal.Window = Window;
+Modal.Open = ModalOpen;
+Modal.Window = ModalWindow;
 
 export default Modal;

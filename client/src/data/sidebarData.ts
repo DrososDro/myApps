@@ -22,8 +22,8 @@ const TODOS_SIDEBAR_DATA: data[] = [
 ];
 
 const DAILY_DIARY_DATA: data[] = [
-  { icon: FaListCheck, to: "daily-diary/show-diary", name: "Show Diary" },
-  { icon: FaPlus, to: "daily-diary/add-diary", name: "Add Diary" },
+  { icon: FaListCheck, to: "diary/show-diary", name: "Show Diary" },
+  { icon: FaPlus, to: "diary/add-diary", name: "Add Diary" },
 ];
 
 const NUTRITIONS_DATA: data[] = [

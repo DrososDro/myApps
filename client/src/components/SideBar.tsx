@@ -21,7 +21,7 @@ export default function Sidebar() {
         setSidebarData(WORKHOURS_SIDEBAR_DATA);
       } else if (path === "todos") {
         setSidebarData(TODOS_SIDEBAR_DATA);
-      } else if (path === "daily-diary") {
+      } else if (path === "diary") {
         setSidebarData(DAILY_DIARY_DATA);
       } else if (path === "nutritions") {
         setSidebarData(NUTRITIONS_DATA);
